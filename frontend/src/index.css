@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-body bg-eco-50 text-slate-800 antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-md p-5;
+}
+
+.btn-primary {
+  @apply bg-eco-600 hover:bg-eco-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium px-5 py-2.5 rounded-xl transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-white border border-eco-200 hover:bg-eco-50 text-eco-700 font-medium px-5 py-2.5 rounded-xl transition-colors;
+}
+
+.input {
+  @apply w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-eco-400 bg-white;
+}
+
+@keyframes gauge-fill {
+  from { stroke-dashoffset: var(--gauge-circumference); }
+}
