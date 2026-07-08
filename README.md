@@ -96,6 +96,12 @@ Firestore collections created automatically:
 If Firebase is not configured, click **“Try Demo Mode”** on the login page — every feature works,
 with data stored in backend memory for the session.
 
+### Serverless demo build
+
+`npm run build:demo` (in `frontend/`) produces a static build in `dist-demo/` where the Flask
+API is replaced by an in-browser mock (`src/mockApi.js`) pre-seeded with a month of sample
+habits. Useful for hosting a shareable demo on any static host — no backend required.
+
 > ⚠️ Never commit `.env` files or `serviceAccountKey.json` — both are git-ignored.
 
 ## Project Structure

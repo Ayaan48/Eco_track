@@ -1,4 +1,9 @@
 import axios from 'axios';
+import mockApi from './mockApi';
+
+// VITE_MOCK_API=1 builds a serverless demo: the Flask API is replaced by an
+// in-browser mock (see mockApi.js) so the app runs as a static page.
+const USE_MOCK = import.meta.env.VITE_MOCK_API === '1';
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
@@ -17,7 +22,7 @@ client.interceptors.request.use((config) => {
   return config;
 });
 
-export const api = {
+const realApi = {
   health: () => client.get('/api/health'),
   calculateFootprint: (habits) => client.post('/api/calculate/footprint', habits),
   logHabits: (habits) => client.post('/api/habits/log', habits),
@@ -30,5 +35,7 @@ export const api = {
   evaluateBadges: () => client.post('/api/habits/badges'),
   electricityEstimate: (payload) => client.post('/api/carbon/electricity', payload),
 };
+
+export const api = USE_MOCK ? mockApi : realApi;
 
 export default api;
